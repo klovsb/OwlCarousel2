@@ -86,6 +86,11 @@
 			if (position === undefined || position === this._core.current()) {
 				return;
 			}
+			
+			//If its a looping slider than we need to factor the cloned items in.
+        		if (this._core._clones.length > 0) {
+                		position = position - (this._core._clones.length / 2);
+            		}
 
 			this._core.to(this._core.relative(position), false, true);
 		}, this));
